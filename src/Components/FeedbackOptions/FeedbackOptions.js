@@ -7,9 +7,9 @@ const FeedbackOptions = ({ options, onLeaveFeedback }) => {
     <FeedbackOptionsStyled>
       <ul onClick={onLeaveFeedback}>
         {options.map(option => (
-          <li key={option.option}>
-            <button type="button" name={option.option}>
-              {option.label}
+          <li key={option}>
+            <button type="button" name={option}>
+              {option.toUpperCase()}
             </button>
           </li>
         ))}
@@ -19,8 +19,8 @@ const FeedbackOptions = ({ options, onLeaveFeedback }) => {
 };
 
 FeedbackOptions.propTypes = {
-  options: PropTypes.array,
-  onLeaveFeedback: PropTypes.func,
+  options: PropTypes.arrayOf(PropTypes.string).isRequired,
+  onLeaveFeedback: PropTypes.func.isRequired,
 };
 
 export default FeedbackOptions;

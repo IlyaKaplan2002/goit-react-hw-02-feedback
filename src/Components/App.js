@@ -4,12 +4,6 @@ import Notification from './Notification';
 import Statistics from './Statistics';
 import Section from './Section';
 
-const OPTIONS = [
-  { option: 'good', label: 'Good' },
-  { option: 'neutral', label: 'Neutral' },
-  { option: 'bad', label: 'Bad' },
-];
-
 class App extends Component {
   state = { good: 0, neutral: 0, bad: 0 };
 
@@ -36,7 +30,10 @@ class App extends Component {
     return (
       <>
         <Section title="Please leave feedback">
-          <FeedbackOptions options={OPTIONS} onLeaveFeedback={this.onLeaveFeedback} />
+          <FeedbackOptions
+            options={Object.keys(this.state)}
+            onLeaveFeedback={this.onLeaveFeedback}
+          />
         </Section>
         <Section title="Statistics">
           {this.countTotalFeedback() ? (
